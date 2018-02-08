@@ -13,6 +13,7 @@ import {UploadComponent} from './upload/upload.component';
 import {MediaService} from './services/media.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {PiippuPipe} from './pipes/piippu.pipe';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,13 @@ import {FormsModule} from '@angular/forms';
     LoginComponent,
     LogoutComponent,
     UploadComponent,
+    PiippuPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-      FormsModule,
+    FormsModule,
 
   ],
   providers: [MediaService],

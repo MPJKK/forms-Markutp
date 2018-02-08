@@ -8,12 +8,13 @@ export class MediaService {
 
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
+  logged = false;
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
   getAllMedia() {
-    return this.http.get(this.apiUrl + '/media');
+    return this.http.get(this.apiUrl + '/media?start=10&limit=10');
   }
 
   newUser(user) {
@@ -27,6 +28,7 @@ export class MediaService {
           localStorage.setItem('token', response.token);
           this.router.navigate(['front']);
           // redirect fronttiin
+          this.logged = true;
           console.log(response);
         }, (error: HttpErrorResponse) => {
           // redirect login
@@ -47,5 +49,9 @@ export class MediaService {
       headers: new HttpHeaders().set('x-access-token', token),
     };
     return this.http.post(this.apiUrl + '/media', file, options);
+  }
+
+  getNew() {
+
   }
 }
